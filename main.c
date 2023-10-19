@@ -1,13 +1,16 @@
 #include "monty.h"
+#include <stdio.h>
+#include <unistd.h>
 
 fileinfo_t info;
+void process(stack_t **stack, unsigned int line_number, char *data);
+
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL;
+	char *line;
 	size_t len = 0;
-	char *token;
-	int line_number = 0;
+	unsigned int line_no = 0;
 	stack_t *stack = NULL;
 	ssize_t nread;
 
@@ -19,17 +22,17 @@ int main(int argc, char *argv[])
 	info.file = fopen(argv[1], "r");
 	if (info.file == NULL)
 	{
-		vprintf("Error: Can't open file ", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
 	while ((nread = getline(&line, &len, info.file)) != -1)
 	{
+		
 		info.fileline = line;
-		line_number++;
-		token = strtok(info.fileline," \t\n");
-		info.args = strtok(NULL, " \t\n");
-		printf("%s\n", token);
+		line++;
+		process(&stack, line_no, line);
 	}
 	fclose(info.file);
+	return (0);
 }

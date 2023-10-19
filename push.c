@@ -7,7 +7,7 @@ void push(stack_t **stack, unsigned int line_number)
 
     if (info.args == NULL)
     {
-        dprintf("L",line_number," : usage: push integer\n");
+        fprintf(stderr, "L%d: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
     data = atoi(info.args);
@@ -24,7 +24,7 @@ void add(stack_t **stack, int data)
 		
 	if (new_node == NULL)
 	{
-        dprintf(stderr,"Error: malloc failed\n");
+        fprintf(stderr,"Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	

@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define  _POSIX_C_SOURCE 200809L
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,4 +49,5 @@ extern fileinfo_t info;
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, int data);
+void process(stack_t **stack, unsigned int line_number, char *data);
 #endif /* MONTY */
