@@ -19,5 +19,11 @@ void process(stack_t **stack, unsigned int line_number, char *data)
             return ;
 
         }
+
     }
+
+    fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
+    free(command);
+    free_stack(*stack);
+    exit(EXIT_FAILURE);
 }

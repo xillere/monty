@@ -31,8 +31,10 @@ int main(int argc, char *argv[])
 		
 		info.fileline = line;
 		line++;
-		process(&stack, line_no, line);
+		process(&stack, line_no, line); 
+		free(info.fileline);
 	}
+	free_stack(stack);
 	fclose(info.file);
 	return (0);
 }
