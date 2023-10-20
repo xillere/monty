@@ -3,11 +3,12 @@
 void process(stack_t **stack, unsigned int line_number, char *data)
 {
     int i;
-    char *command = NULL;
+    
     instruction_t codes[] = {
         {"push", push}, {"pall", pall},
 	{"pint", pint}, {NULL, NULL}
     };
+    char *command;
     
     command = strtok(data, " \n\t");
     info.args = strtok(NULL, " \n\t");
@@ -24,7 +25,6 @@ void process(stack_t **stack, unsigned int line_number, char *data)
     }
 
     fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
-    free(command);
-    free_stack(*stack);
+    /*free_stack(*stack);*/
     exit(EXIT_FAILURE);
 }
