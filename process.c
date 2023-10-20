@@ -5,7 +5,8 @@ void process(stack_t **stack, unsigned int line_number, char *data)
     int i;
     char *command = NULL;
     instruction_t codes[] = {
-        {"push", push}, {"pall", pall}, {NULL, NULL}
+        {"push", push}, {"pall", pall},
+	{"pint", pint}, {NULL, NULL}
     };
     
     command = strtok(data, " \n\t");
