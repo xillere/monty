@@ -3,16 +3,11 @@
 #include <unistd.h>
 
 fileinfo_t info;
-void process(stack_t **stack, unsigned int line_number, char *data);
-
+void process(stack_t **stack);
 
 int main(int argc, char *argv[])
 {
-	char *line = NULL;
-	size_t len = 0;
-	unsigned int line_no = 0;
 	stack_t *stack = NULL;
-	ssize_t nread;
 	FILE *op;
 
 	if (argc != 2)
@@ -28,14 +23,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((nread = getline(&line, &len, info.file)) != -1)
-	{
-		info.fileline = line;
-		line++;
-		process(&stack, line_no, line); 
-		
-	}
-	free(info.fileline);
+	process(&stack);
+
 	free_stack(stack);
 	fclose(op);
 	return (0);

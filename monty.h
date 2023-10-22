@@ -51,6 +51,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, int data);
-void process(stack_t **stack, unsigned int line_number, char *data);
+void process(stack_t **stack);
+void pop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 #endif /* MONTY */

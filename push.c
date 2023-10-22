@@ -5,7 +5,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
     int data;
 
-    if (info.args == NULL || (is_int(info.args) == 0))
+    if (info.args == NULL)
     {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
         fclose(info.file);
