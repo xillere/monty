@@ -2,8 +2,16 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
 fileinfo_t info;
 void process(stack_t **stack);
+
+/**
+ * main - monty program
+ * @argc: args
+ * @argv: argv
+ * Return: integers
+ */
 
 int main(int argc, char *argv[])
 {

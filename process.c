@@ -1,34 +1,38 @@
 #include "monty.h"
 
+/**
+ * process - do
+ * @stack: stack
+ * Return: no
+ */
+
 void process(stack_t **stack)
 {
-    int i;
-    size_t len = 0;
-    ssize_t nread;
-    unsigned int line_number;
-    char *command = NULL;
-    
-    instruction_t codes[] = {
-        {"push", push}, {"pall", pall}, {"pop",pop}, {"nop", nop},
-	{"pint", pint}, {NULL, NULL}
-    };
-    while((nread = getline(&info.fileline, &len, info.file)) != -1)
-    {
-	    line_number++;
-    command = strtok(info.fileline, " \n\t");
-    info.args = strtok(NULL, " \n\t");
+	int i;
+	size_t len = 0;
+	ssize_t nread;
+	unsigned int line_number;
+	char *command = NULL;
+	instruction_t codes[] = {
+		{"push", push}, {"pall", pall}, {"pop", pop},
+		{"nop", nop}, {"pint", pint}, {NULL, NULL}
+	};
 
-    for (i = 0; codes[i].opcode != NULL; i++)
-    {
-        if (strcmp(command, codes[i].opcode) == 0)
-        {
-            codes[i].f(stack, line_number);
-	    break;
-        }
-
-    }
-    }
-    /*fprintf(stderr, L%d: unknown instruction %s\n, line_number, command);*/
-    /*free_stack(*stack);*/
-    exit(EXIT_FAILURE);
+	while ((nread = getline(&info.fileline, &len, info.file)) != -1)
+	{
+		line_number++;
+		command = strtok(info.fileline, " \n\t");
+		info.args = strtok(NULL, " \n\t");
+		for (i = 0; codes[i].opcode != NULL; i++)
+		{
+			if (strcmp(command, codes[i].opcode) == 0)
+			{
+				codes[i].f(stack, line_number);
+				break;
+			}
+		}
+	}
+/*fprintf(stderr, L%d: unknown instruction %s\n, line_number, command);*/
+/*free_stack(*stack);*/
+	exit(EXIT_FAILURE);
 }
