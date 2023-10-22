@@ -9,7 +9,7 @@ void process(stack_t **stack)
     char *command = NULL;
     
     instruction_t codes[] = {
-        {"push", push}, {"pall", pall}, {"pop",pop},
+        {"push", push}, {"pall", pall}, {"pop",pop}, {"nop", nop},
 	{"pint", pint}, {NULL, NULL}
     };
     while((nread = getline(&info.fileline, &len, info.file)) != -1)
@@ -23,11 +23,12 @@ void process(stack_t **stack)
         if (strcmp(command, codes[i].opcode) == 0)
         {
             codes[i].f(stack, line_number);
+	    break;
         }
 
     }
     }
-	/*fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);*/
+    /*fprintf(stderr, L%d: unknown instruction %s\n, line_number, command);*/
     /*free_stack(*stack);*/
     exit(EXIT_FAILURE);
 }
