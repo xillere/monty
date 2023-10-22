@@ -2,7 +2,7 @@
 
 void process(stack_t **stack)
 {
-    int i, bool = 0;
+    int i;
     size_t len = 0;
     ssize_t nread;
     unsigned int line_number;
