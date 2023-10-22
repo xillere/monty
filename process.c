@@ -2,7 +2,7 @@
 
 void process(stack_t **stack)
 {
-    int i;
+    int i, bool = 0;
     size_t len = 0;
     ssize_t nread;
     unsigned int line_number;
@@ -27,7 +27,7 @@ void process(stack_t **stack)
 
     }
     }
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
+	/*fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);*/
     /*free_stack(*stack);*/
     exit(EXIT_FAILURE);
 }
