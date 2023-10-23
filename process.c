@@ -31,8 +31,11 @@ void process(stack_t **stack)
 				break;
 			}
 		}
+		if (command && codes[i].opcode == NULL)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
+			free_stack(*stack);
+			exit(EXIT_FAILURE);
+		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
-	free_stack(*stack);
-	exit(EXIT_FAILURE);
 }
