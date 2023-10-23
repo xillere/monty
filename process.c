@@ -32,7 +32,10 @@ void process(stack_t **stack)
 			}
 		}
 	}
-/*fprintf(stderr, L%d: unknown instruction %s\n, line_number, command);*/
-/*free_stack(*stack);*/
-	exit(EXIT_FAILURE);
+	if (codes[i].opcode == NULL)
+	{
+		fprintf(stderr,"L%d: unknown instruction %s\n", line_number, command);
+		free_stack(*stack);
+		exit (EXIT_FAILURE);
+	}
 }
