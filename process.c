@@ -11,7 +11,7 @@ void process(stack_t **stack)
 	int i;
 	size_t len = 0;
 	ssize_t nread;
-	unsigned int line_number;
+	int line_number = 0;
 	char *command = NULL;
 	instruction_t codes[] = {
 		{"push", push}, {"pall", pall}, {"pop", pop},
@@ -32,10 +32,7 @@ void process(stack_t **stack)
 			}
 		}
 	}
-	if (codes[i].opcode == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, command);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
 }
