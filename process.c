@@ -14,7 +14,7 @@ void process(stack_t **stack)
 	int line_number = 0;
 	char *command = NULL;
 	instruction_t codes[] = {
-		{"push", push}, {"pall", pall}, {"pop", pop},
+		{"push", push}, {"pall", pall}, {"pop", pop}, {"add", addf},
 		{"nop", nop}, {"pint", pint}, {"swap", swap}, {NULL, NULL}
 	};
 
