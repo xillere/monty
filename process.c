@@ -15,7 +15,7 @@ void process(stack_t **stack)
 	char *command = NULL;
 	instruction_t codes[] = {
 		{"push", push}, {"pall", pall}, {"pop", pop},
-		{"nop", nop}, {"pint", pint}, {NULL, NULL}
+		{"nop", nop}, {"pint", pint}, {"swap", swap}, {NULL, NULL}
 	};
 
 	while ((nread = getline(&info.fileline, &len, info.file)) != -1)
